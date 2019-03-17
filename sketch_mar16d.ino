@@ -1,3 +1,4 @@
+#define LED 8
 int trigPin = 12;    // Trigger
 int echoPin = 13;    // Echo
 long duration1, duration2, cm, td, loop1, temp, count;
@@ -5,6 +6,7 @@ long duration1, duration2, cm, td, loop1, temp, count;
 void setup() {
   //Serial Port begin
   Serial.begin  (9600);
+  pinMode(LED, OUTPUT);
   //Define inputs and outputs
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
@@ -43,11 +45,15 @@ void loop() {
         {
           count =count + 1;
         }
-      }
-    }
+     }
+   }
     if(count == 10)
     {
       Serial.println(1);
+    digitalWrite(LED, HIGH);
+    delay(10000);
+    digitalWrite(LED, LOW);
+    delay(10000);
     }
     else
     {
@@ -55,5 +61,3 @@ void loop() {
     }
      delay(25);
   }
-  //Serial.print("cm");
- // Serial.println();
